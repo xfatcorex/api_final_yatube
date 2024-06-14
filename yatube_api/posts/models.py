@@ -13,7 +13,7 @@ class Post(models.Model):
         User, on_delete=models.CASCADE,
         verbose_name='Автор публикации')
     image = models.ImageField('Фото',
-        upload_to='posts/', blank=True)
+                              upload_to='posts/', blank=True)
     group = models.ForeignKey(
         'Group', on_delete=models.SET_NULL,
         blank=True, null=True, verbose_name='Группа'
