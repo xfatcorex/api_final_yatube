@@ -1,10 +1,10 @@
 import base64
+
+from django.core.files.base import ContentFile
 from rest_framework.relations import SlugRelatedField
 from rest_framework.serializers import (CurrentUserDefault, ImageField,
                                         ModelSerializer, ValidationError)
 from rest_framework.validators import UniqueTogetherValidator
-
-from django.core.files.base import ContentFile
 
 from posts.models import Comment, Follow, Group, Post, User
 

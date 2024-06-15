@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from rest_framework.validators import ValidationError
 
 TEXT_LENGTH = 50
 
@@ -78,6 +79,12 @@ class Follow(models.Model):
                 name='unique_user_following'
             )
         ]
+
+    def clean(self):
+        if self.user == self.following:
+            raise ValidationError(
+                'Нельзя подписаться на самого себя'
+            )
 
     def __str__(self):
         return f'{self.user} - {self.following}'
